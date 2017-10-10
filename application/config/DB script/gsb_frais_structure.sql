@@ -46,10 +46,10 @@ CREATE TABLE IF NOT EXISTS `etat` (
 -- --------------------------------------------------------
 
 --
--- Structure de la table `visiteur`
+-- Structure de la table `utilisateur`
 --
 
-CREATE TABLE IF NOT EXISTS `visiteur` (
+CREATE TABLE IF NOT EXISTS `utilisateur` (
   `id` char(4) NOT NULL,
   `nom` char(30) DEFAULT NULL,
   `prenom` char(30) DEFAULT NULL,
@@ -77,7 +77,7 @@ CREATE TABLE IF NOT EXISTS `fichefrais` (
   `idEtat` char(2) DEFAULT 'CR',
   PRIMARY KEY (`idVisiteur`,`mois`),
   FOREIGN KEY (`idEtat`) REFERENCES Etat(`id`),
-  FOREIGN KEY (`idVisiteur`) REFERENCES Visiteur(`id`)
+  FOREIGN KEY (`idVisiteur`) REFERENCES Utilisateur(`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------

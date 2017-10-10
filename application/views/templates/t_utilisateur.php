@@ -35,19 +35,19 @@
 				
 				<ul id="menuList">
 					<li>
-						Visiteur :<br/>
+						Utilisateur :<br/>
 						<?php echo $this->session->userdata('prenom')."  ".$this->session->userdata('nom');  ?>
 					</li>
 					<br/>
 					<li class="smenu">
-						<?php echo anchor('c_visiteur/', 'Accueil', 'title="Page d\'accueil"'); ?>
+						<?php echo anchor('c_utilisateur/', 'Accueil', 'title="Page d\'accueil"'); ?>
 					</li>
 					<li class="smenu">
-						<?php echo anchor('c_visiteur/mesFiches', 'Mes fiches de frais', 'title="Consultation de mes fiches de frais"'); ?>
+						<?php echo anchor('c_utilisateur/mesFiches', 'Mes fiches de frais', 'title="Consultation de mes fiches de frais"'); ?>
 					</li>
 					<br/>
 					<li class="smenu">
-						<?php echo anchor('c_visiteur/deconnecter', 'Se déconnecter', 'title="Déconnexion"'); ?>
+						<?php echo anchor('c_utilisateur/deconnecter', 'Se déconnecter', 'title="Déconnexion"'); ?>
 					</li>
 				</ul>
 				

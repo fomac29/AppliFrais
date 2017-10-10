@@ -9,7 +9,7 @@ class Authentif extends CI_Model {
     }
 
 	 /**
-	 * Teste si un quelconque visiteur est connecté
+	 * Teste si un quelconque utilisateur est connecté
 	 * 
 	 * @return vrai ou faux 
 	 */
@@ -19,7 +19,7 @@ class Authentif extends CI_Model {
 	}
 	
 	/**
-	 * Enregistre dans une variable session les infos d'un visiteur
+	 * Enregistre dans une variable session les infos d'un utilisateur
 	 * 
 	 * @param $id 
 	 * @param $nom
@@ -65,7 +65,7 @@ class Authentif extends CI_Model {
 	
 		$this->load->model('dataAccess');
 
-		$authUser = $this->dataAccess->getInfosVisiteur($login, $mdp);
+		$authUser = $this->dataAccess->getInfosUtilisateur($login, $mdp);
 
 		return $authUser;
 	}

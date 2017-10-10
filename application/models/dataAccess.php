@@ -13,16 +13,16 @@ class DataAccess extends CI_Model {
     }
 
     /**
-	 * Retourne les informations d'un visiteur
+	 * Retourne les informations d'un utilisateur
 	 * 
 	 * @param $login 
 	 * @param $mdp
 	 * @return l'id, le nom et le prénom sous la forme d'un tableau associatif 
 	*/
-	public function getInfosVisiteur($login, $mdp){
-		$req = "select visiteur.id as id, visiteur.nom as nom, visiteur.prenom as prenom 
-				from visiteur 
-				where visiteur.login=? and visiteur.mdp=?";
+	public function getInfosUtilisateur($login, $mdp){
+		$req = "select utilisateur.id as id, utilisateur.nom as nom, utilisateur.prenom as prenom 
+				from utilisateur 
+				where utilisateur.login=? and utilisateur.mdp=?";
 		$rs = $this->db->query($req, array ($login, $mdp));
 		$ligne = $rs->first_row('array'); 
 		return $ligne;
@@ -56,7 +56,7 @@ class DataAccess extends CI_Model {
 	}
 		
 	/**
-	 * Retourne le nombre de justificatif d'un visiteur pour un mois donné
+	 * Retourne le nombre de justificatif d'un utilisateur pour un mois donné
 	 * 
 	 * @param $idVisiteur 
 	 * @param $mois sous la forme aaaamm
@@ -103,7 +103,7 @@ class DataAccess extends CI_Model {
 	}
 	
 	/**
-	 * Met à jour la table ligneFraisForfait pour un visiteur et
+	 * Met à jour la table ligneFraisForfait pour un utilisateur et
 	 * un mois donné en enregistrant les nouveaux montants
 	 * 
 	 * @param $idVisiteur 
@@ -125,7 +125,7 @@ class DataAccess extends CI_Model {
 		
 	/**
 	 * met à jour le nombre de justificatifs de la table ficheFrais
-	 * pour le mois et le visiteur concerné
+	 * pour le mois et le utilisateur concerné
 	 * 
 	 * @param $idVisiteur 
 	 * @param $mois sous la forme aaaamm
@@ -139,7 +139,7 @@ class DataAccess extends CI_Model {
 	}
 		
 	/**
-	 * Teste si un visiteur possède une fiche de frais pour le mois passé en argument
+	 * Teste si un utilisateur possède une fiche de frais pour le mois passé en argument
 	 * 
 	 * @param $idVisiteur 
 	 * @param $mois sous la forme aaaamm
@@ -160,7 +160,7 @@ class DataAccess extends CI_Model {
 	}
 	
 	/**
-	 * Crée une nouvelle fiche de frais et les lignes de frais au forfait pour un visiteur et un mois donnés
+	 * Crée une nouvelle fiche de frais et les lignes de frais au forfait pour un utilisateur et un mois donnés
 	 * L'état de la fiche est mis à 'CR'
 	 * Lles lignes de frais forfait sont affectées de quantités nulles et du montant actuel de FraisForfait
 	 * 
@@ -197,7 +197,7 @@ class DataAccess extends CI_Model {
 	}
 
 	/**
-	 * Crée un nouveau frais hors forfait pour un visiteur un mois donné
+	 * Crée un nouveau frais hors forfait pour un utilisateur un mois donné
 	 * à partir des informations fournies en paramètre
 	 * 
 	 * @param $idVisiteur 
@@ -227,7 +227,7 @@ class DataAccess extends CI_Model {
 	}
 
 	/**
-	 * Retourne les mois pour lesquel un visiteur a une fiche de frais
+	 * Retourne les mois pour lesquel un utilisateur a une fiche de frais
 	 * 
 	 * @param $idVisiteur 
 	 * @return un tableau associatif de clé un mois -aaaamm- et de valeurs l'année et le mois correspondant 
@@ -255,7 +255,7 @@ class DataAccess extends CI_Model {
 	}
 
 	/**
-	 * Retourne les informations d'une fiche de frais d'un visiteur pour un mois donné
+	 * Retourne les informations d'une fiche de frais d'un utilisateur pour un mois donné
 	 * 
 	 * @param $idVisiteur 
 	 * @param $mois sous la forme aaaamm
@@ -286,7 +286,7 @@ class DataAccess extends CI_Model {
 	}
 	
 	/**
-	 * Obtient toutes les fiches (sans détail) d'un visiteur donné 
+	 * Obtient toutes les fiches (sans détail) d'un utilisateur donné 
 	 * 
 	 * @param $idVisiteur 
 	*/
@@ -301,7 +301,7 @@ class DataAccess extends CI_Model {
 	}
 	
 	/**
-	 * Calcule le montant total de la fiche pour un visiteur et un mois donnés
+	 * Calcule le montant total de la fiche pour un utilisateur et un mois donnés
 	 * 
 	 * @param $idVisiteur 
 	 * @param $mois
@@ -332,7 +332,7 @@ class DataAccess extends CI_Model {
 	/**
 	 * Modifie le montantValide et la date de modification d'une fiche de frais
 	 * 
-	 * @param $idVisiteur : l'id du visiteur
+	 * @param $idVisiteur : l'id du utilisateur
 	 * @param $mois : mois sous la forme aaaamm
 	 */
 	public function recalculeMontantFiche($idVisiteur,$mois){

@@ -1,6 +1,6 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-class A_visiteur extends CI_Model {
+class A_utilisateur extends CI_Model {
 
     function __construct()
     {
@@ -12,7 +12,7 @@ class A_visiteur extends CI_Model {
     }
 
 	/**
-	 * Accueil du visiteur
+	 * Accueil du utilisateur
 	 * La fonction intègre un mécanisme de contrôle d'existence des 
 	 * fiches de frais sur les 6 derniers mois. 
 	 * Si l'une d'elle est absente, elle est créée
@@ -33,15 +33,15 @@ class A_visiteur extends CI_Model {
 		foreach ($lesMois as $unMois){
 			if(!$this->dataAccess->ExisteFiche($idVisiteur, $unMois)) $this->dataAccess->creeFiche($idVisiteur, $unMois);
 		}
-		// envoie de la vue accueil du visiteur
-		$this->templates->load('t_visiteur', 'v_visAccueil');
+		// envoie de la vue accueil du utilisateur
+		$this->templates->load('t_utilisateur', 'v_visAccueil');
 	}
 	
 	/**
-	 * Liste les fiches existantes du visiteur connecté et 
+	 * Liste les fiches existantes du utilisateur connecté et 
 	 * donne accès aux fonctionnalités associées
 	 *
-	 * @param $idVisiteur : l'id du visiteur 
+	 * @param $idVisiteur : l'id du utilisateur 
 	 * @param $message : message facultatif destiné à notifier l'utilisateur du résultat d'une action précédemment exécutée
 	*/
 	public function mesFiches ($idVisiteur, $message=null)
@@ -51,13 +51,13 @@ class A_visiteur extends CI_Model {
 
 		$data['notify'] = $message;
 		$data['mesFiches'] = $this->dataAccess->getFiches($idVisiteur);		
-		$this->templates->load('t_visiteur', 'v_visMesFiches', $data);	
+		$this->templates->load('t_utilisateur', 'v_visMesFiches', $data);	
 	}	
 
 	/**
 	 * Présente le détail de la fiche sélectionnée 
 	 * 
-	 * @param $idVisiteur : l'id du visiteur 
+	 * @param $idVisiteur : l'id du utilisateur 
 	 * @param $mois : le mois de la fiche à modifier 
 	*/
 	public function voirFiche($idVisiteur, $mois)
@@ -68,14 +68,14 @@ class A_visiteur extends CI_Model {
 		$data['lesFraisHorsForfait'] = $this->dataAccess->getLesLignesHorsForfait($idVisiteur,$mois);
 		$data['lesFraisForfait'] = $this->dataAccess->getLesLignesForfait($idVisiteur,$mois);		
 
-		$this->templates->load('t_visiteur', 'v_visVoirListeFrais', $data);
+		$this->templates->load('t_utilisateur', 'v_visVoirListeFrais', $data);
 	}
 
 	/**
 	 * Présente le détail de la fiche sélectionnée et donne 
 	 * accés à la modification du contenu de cette fiche.
 	 * 
-	 * @param $idVisiteur : l'id du visiteur 
+	 * @param $idVisiteur : l'id du utilisateur 
 	 * @param $mois : le mois de la fiche à modifier 
 	 * @param $message : message facultatif destiné à notifier l'utilisateur du résultat d'une action précédemment exécutée
 	*/
@@ -88,13 +88,13 @@ class A_visiteur extends CI_Model {
 		$data['lesFraisHorsForfait'] = $this->dataAccess->getLesLignesHorsForfait($idVisiteur,$mois);
 		$data['lesFraisForfait'] = $this->dataAccess->getLesLignesForfait($idVisiteur,$mois);		
 
-		$this->templates->load('t_visiteur', 'v_visModListeFrais', $data);
+		$this->templates->load('t_utilisateur', 'v_visModListeFrais', $data);
 	}
 
 	/**
 	 * Signe une fiche de frais en changeant son état
 	 * 
-	 * @param $idVisiteur : l'id du visiteur 
+	 * @param $idVisiteur : l'id du utilisateur 
 	 * @param $mois : le mois de la fiche à signer
 	*/
 	public function signeFiche($idVisiteur, $mois)
@@ -107,7 +107,7 @@ class A_visiteur extends CI_Model {
 	/**
 	 * Modifie les quantités associées aux frais forfaitisés dans une fiche donnée
 	 * 
-	 * @param $idVisiteur : l'id du visiteur 
+	 * @param $idVisiteur : l'id du utilisateur 
 	 * @param $mois : le mois de la fiche concernée
 	 * @param $lesFrais : les quantités liées à chaque type de frais, sous la forme d'un tableau
 	*/
@@ -122,7 +122,7 @@ class A_visiteur extends CI_Model {
 	/**
 	 * Ajoute une ligne de frais hors forfait dans une fiche donnée
 	 * 
-	 * @param $idVisiteur : l'id du visiteur 
+	 * @param $idVisiteur : l'id du utilisateur 
 	 * @param $mois : le mois de la fiche concernée
 	 * @param $lesFrais : les quantités liées à chaque type de frais, sous la forme d'un tableau
 	*/
@@ -140,7 +140,7 @@ class A_visiteur extends CI_Model {
 	/**
 	 * Supprime une ligne de frais hors forfait dans une fiche donnée
 	 * 
-	 * @param $idVisiteur : l'id du visiteur 
+	 * @param $idVisiteur : l'id du utilisateur 
 	 * @param $mois : le mois de la fiche concernée
 	 * @param $idLigneFrais : l'id de la ligne à supprimer
 	*/

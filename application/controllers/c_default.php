@@ -12,7 +12,7 @@ class C_default extends CI_Controller {
 	/**
 	 * Fonctionnalité par défaut du contrôleur. 
 	 * Vérifie l'existence d'une connexion :
-	 * Soit elle existe et on redirige vers le contrôleur de VISITEUR, 
+	 * Soit elle existe et on redirige vers le contrôleur de UTILISATEUR, 
 	 * soit elle n'existe pas et on envoie la vue de connexion
 	*/
 	public function index()
@@ -27,7 +27,7 @@ class C_default extends CI_Controller {
 		else
 		{
 			$this->load->helper('url');
-			redirect('/c_visiteur/');
+			redirect('/c_utilisateur/');
 		}
 	}
 	

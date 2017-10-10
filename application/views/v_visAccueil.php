@@ -1,5 +1,5 @@
 <div id="contenu">
-	<h2>Gestion des frais des visiteurs</h2>
+	<h2>Gestion des frais des utilisateurs</h2>
 	<p>Bienvenue dans votre application de gestion des frais de déplacements. </p>
 	<p>
 		Afin de couvrir les frais que vous avez engagés lors de vos déplacements professionnels, vous devez compléter des fiches de frais mensuelles.
@@ -13,7 +13,7 @@
 
 	<p>
 		Au moyen du bandeau gauche, vous avez accès aux fonctionalités 
-		du profil visiteur : 
+		du profil utilisateur : 
 		<ul>
 			<li>Gérer vos fiches de frais (modifier, signer, imprimer)</li>
 			<li>Se déconnecter</li>

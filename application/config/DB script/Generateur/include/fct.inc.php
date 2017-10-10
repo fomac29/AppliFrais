@@ -1,8 +1,8 @@
 <?php
 
-function getLesVisiteurs($pdo)
+function getLesUtilisateurs($pdo)
 {
-		$req = "select * from visiteur";
+		$req = "select * from utilisateur";
 		$res = $pdo->query($req);
 		$lesLignes = $res->fetchAll();
 		return $lesLignes;
@@ -60,14 +60,14 @@ function getMoisPrecedent($mois){
 }
 function creationFichesFrais($pdo)
 {
-	$lesVisiteurs = getLesVisiteurs($pdo);
+	$lesUtilisateurs = getLesUtilisateurs($pdo);
 	$moisActuel = getMois(date("d/m/Y"));
 	$moisDebut = "201301";
 	$moisFin = getMoisPrecedent($moisActuel);
-	foreach($lesVisiteurs as $unVisiteur)
+	foreach($lesUtilisateurs as $unUtilisateur)
 	{
 		$moisCourant = $moisFin;
-		$idVisiteur = $unVisiteur['id'];
+		$idVisiteur = $unUtilisateur['id'];
 		$n = 1;
 		while($moisCourant >= $moisDebut)
 		{
@@ -178,23 +178,23 @@ function getDesFraisHorsForfait()
 		);
 	return $tab;
 }
-function updateMdpVisiteur($pdo)
+function updateMdpUtilisateur($pdo)
 {
-	$req = "select * from visiteur";
+	$req = "select * from utilisateur";
 		$res = $pdo->query($req);
 		$lesLignes = $res->fetchAll();
 		$lettres ="azertyuiopqsdfghjkmwxcvbn123456789";
-		foreach($lesLignes as $unVisiteur)
+		foreach($lesLignes as $unUtilisateur)
 		{
 			$mdp = "";
-			$id = $unVisiteur['id'];
+			$id = $unUtilisateur['id'];
 			for($i =1;$i<=5;$i++)
 			{
 				$uneLettrehasard = substr( $lettres,rand(33,1),1);
 				$mdp = $mdp.$uneLettrehasard;
 			}
 			
-			$req = "update visiteur set mdp ='$mdp' where visiteur.id ='$id' ";
+			$req = "update utilisateur set mdp ='$mdp' where utilisateur.id ='$id' ";
 			$pdo->exec($req);
 		}
 
