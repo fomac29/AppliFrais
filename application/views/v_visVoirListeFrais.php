@@ -1,5 +1,5 @@
 <?php
-	$this->load->helper('url');
+$this->load->helper('url');
 ?>
 
 <div id="contenu">
@@ -19,7 +19,7 @@
 					echo 
 					'<p>
 						<label for="'.$idFrais.'">'.$libelle.'</label>
-						<input type="text" id="'.$idFrais.'" name="lesFrais['.$idFrais.']" size="10" maxlength="5" value="'.$quantite.'" />
+						<input type="texte" id="'.$idFrais.'" name="lesFrais['.$idFrais.']" size="10" maxlength="5" value="'.$quantite.'" disabled="disabled" />
 					</p>
 					';
 				}
@@ -34,8 +34,7 @@
 		<tr>
 			<th >Date</th>
 			<th >Libellé</th>  
-			<th >Montant</th>  
-			<th >&nbsp;</th>              
+			<th >Montant</th>             
 		</tr>
           
 		<?php    
@@ -50,12 +49,7 @@
 					<td class="date">'.$date.'</td>
 					<td class="libelle">'.$libelle.'</td>
 					<td class="montant">'.$montant.'</td>
-					<td class="action">'.
-					anchor(	"c_utilisateur/supprFrais/$id", 
-							"Supprimer ce frais", 
-							'title="Suppression d\'une ligne de frais" onclick="return confirm(\'Voulez-vous vraiment supprimer ce frais ?\');"'
-						).
-					'</td>
+
 				</tr>';
 			}
 		?>	  
