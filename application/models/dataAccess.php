@@ -20,8 +20,8 @@ class DataAccess extends CI_Model {
 	 * @return l'id, le nom et le prénom sous la forme d'un tableau associatif 
 	*/
 	public function getInfosUtilisateur($login, $mdp){
-		$req = "select utilisateur.id as id, utilisateur.nom as nom, utilisateur.prenom as prenom 
-				from utilisateur 
+		$req = "select utilisateur.id as id, utilisateur.statut as statut, utilisateur.nom as nom, utilisateur.prenom as prenom 
+				from utilisateur
 				where utilisateur.login=? and utilisateur.mdp=?";
 		$rs = $this->db->query($req, array ($login, $mdp));
 		$ligne = $rs->first_row('array'); 

@@ -15,19 +15,25 @@ class C_default extends CI_Controller {
 	 * Soit elle existe et on redirige vers le contrôleur de UTILISATEUR, 
 	 * soit elle n'existe pas et on envoie la vue de connexion
 	*/
-	public function index()
+	public function index($statut = NULL)
 	{
 		$this->load->model('authentif');
 		
-		if (!$this->authentif->estConnecte()) 
+		if (!$this->authentif->estConnecte())
 		{
 			$data = array();
 			$this->templates->load('t_connexion', 'v_connexion', $data);
 		}
-		else
+		else if($statut == 'visiteur')
 		{
 			$this->load->helper('url');
-			redirect('/c_utilisateur/');
+			redirect('/c_visiteur/');
+		}
+		
+		else if($statut == 'comptable')
+		{
+			$this->load->helper('url');
+			redirect('/c_comptable/');
 		}
 	}
 	
@@ -36,7 +42,7 @@ class C_default extends CI_Controller {
 	 * s'il est reconnu
 	*/
 	public function connecter () 
-	{	// TODO : conrôler que l'obtention des données postées ne rend pas d'erreurs 
+	{	// TODO : contrôler que l'obtention des données postées ne rend pas d'erreurs 
 
 		$this->load->model('authentif');
 		
@@ -52,8 +58,8 @@ class C_default extends CI_Controller {
 		}
 		else
 		{
-			$this->authentif->connecter($authUser['id'], $authUser['nom'], $authUser['prenom']);
-			$this->index();
+			$this->authentif->connecter($authUser['id'], $authUser['nom'], $authUser['prenom'], $authUser['statut']);
+			$this->index($authUser['statut']);
 		}
 	}
 	

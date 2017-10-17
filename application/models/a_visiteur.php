@@ -1,6 +1,6 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-class A_utilisateur extends CI_Model {
+class A_visiteur extends CI_Model {
 
     function __construct()
     {
@@ -34,7 +34,7 @@ class A_utilisateur extends CI_Model {
 			if(!$this->dataAccess->ExisteFiche($idVisiteur, $unMois)) $this->dataAccess->creeFiche($idVisiteur, $unMois);
 		}
 		// envoie de la vue accueil du utilisateur
-		$this->templates->load('t_utilisateur', 'v_visAccueil');
+		$this->templates->load('t_visiteur', 'v_visAccueil');
 	}
 	
 	/**
@@ -51,7 +51,7 @@ class A_utilisateur extends CI_Model {
 
 		$data['notify'] = $message;
 		$data['mesFiches'] = $this->dataAccess->getFiches($idVisiteur);		
-		$this->templates->load('t_utilisateur', 'v_visMesFiches', $data);	
+		$this->templates->load('t_visiteur', 'v_visMesFiches', $data);	
 	}	
 
 	/**
@@ -68,7 +68,7 @@ class A_utilisateur extends CI_Model {
 		$data['lesFraisHorsForfait'] = $this->dataAccess->getLesLignesHorsForfait($idVisiteur,$mois);
 		$data['lesFraisForfait'] = $this->dataAccess->getLesLignesForfait($idVisiteur,$mois);		
 
-		$this->templates->load('t_utilisateur', 'v_visVoirListeFrais', $data);
+		$this->templates->load('t_visiteur', 'v_visVoirListeFrais', $data);
 	}
 
 	/**
@@ -88,7 +88,7 @@ class A_utilisateur extends CI_Model {
 		$data['lesFraisHorsForfait'] = $this->dataAccess->getLesLignesHorsForfait($idVisiteur,$mois);
 		$data['lesFraisForfait'] = $this->dataAccess->getLesLignesForfait($idVisiteur,$mois);		
 
-		$this->templates->load('t_utilisateur', 'v_visModListeFrais', $data);
+		$this->templates->load('t_visiteur', 'v_visModListeFrais', $data);
 	}
 
 	/**
