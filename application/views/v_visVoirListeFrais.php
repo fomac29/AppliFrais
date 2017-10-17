@@ -1,5 +1,5 @@
 <?php
-$this->load->helper('url');
+	$this->load->helper('url');
 ?>
 
 <div id="contenu">
@@ -49,7 +49,6 @@ $this->load->helper('url');
 					<td class="date">'.$date.'</td>
 					<td class="libelle">'.$libelle.'</td>
 					<td class="montant">'.$montant.'</td>
-
 				</tr>';
 			}
 		?>	  
